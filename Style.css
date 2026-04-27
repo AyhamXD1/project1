@@ -1,0 +1,34 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Tajawal',sans-serif;background:#f5f0e8;color:#2c1f0e;min-height:100vh}
+:root{
+  --cream:#f5f0e8;
+  --paper:#faf7f2;
+  --brown:#5c3d1e;
+  --brown-light:#8b5e3c;
+  --brown-pale:#c4a882;
+  --ink:#2c1f0e;
+  --ink-light:#6b5044;
+  --accent:#5c3d1e;
+  --accent-warm:#e8b86d;
+  --border:rgba(92,61,30,0.15);
+  --border-strong:rgba(92,61,30,0.3);
+  --surface:#fdf9f4;
+  --shadow:rgba(92,61,30,0.12);
+}
+input,select{
+  font-family:'Tajawal',sans-serif;
+  background:var(--paper);
+  border:1px solid var(--border-strong);
+  color:var(--ink);
+  border-radius:15px;
+  padding:15px 20px;
+  font-size:20px;
+  outline:none;
+  width:100%;
+  transition:border-color 0.2s;
+}
+input:focus,select:focus{border-color:var(--brown)}
+button{cursor:pointer;font-family:'Tajawal',sans-serif}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.book-card{animation:fadeIn 0.3s ease both}
+@media(max-width:600px){.desktop-nav{display:none!important}.hamburger{display:block!important}}
