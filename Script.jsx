@@ -20,12 +20,15 @@ const BOOKS = [
 
 const GENRES = ["الكل","هندسة البرمجيات","تكنولوجيا المعلومات","علم الحاسوب","انظمة المعلومات الحاسوبية","علم البيانات والذكاء الاصطناعي","رياضيات"];
 const SORTS = [
+  
   {value:"year-desc",label:"الأحدث"},
   {value:"year-asc",label:"الأقدم"},
   {value:"title-asc",label:"الاسم أ-ي"},
   {value:"pages-desc",label:"الأطول"},
   {value:"pages-asc",label:"الأقصر"},
 ];
+
+
 
 function BookCard({book, delay}){
   const [hov,setHov]=useState(false);
@@ -51,13 +54,14 @@ function BookCard({book, delay}){
       <div style={{fontFamily:"'Lora',serif",fontSize:14,fontWeight:700,color:"var(--ink)",lineHeight:1.4,marginBottom:4}}>{book.title}</div>
       <div style={{fontSize:12,color:"var(--ink-light)",fontStyle:"italic"}}>{book.author}</div>
     </div>
-    <Stars rating={book.rating}/>
+    
     <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
       <span style={{fontSize:11,padding:"3px 9px",background:"rgba(92,61,30,0.08)",color:"var(--brown)",borderRadius:4,border:"1px solid var(--border-strong)",fontWeight:500}}>{book.genre}</span>
       <span style={{fontSize:11,padding:"3px 9px",background:"rgba(192,57,43,0.07)",color:"var(--accent)",borderRadius:4,border:"1px solid rgba(192,57,43,0.2)"}}>{book.year}</span>
       <span style={{fontSize:11,padding:"3px 9px",background:"rgba(92,61,30,0.05)",color:"var(--ink-light)",borderRadius:4}}>{book.pages} صفحة</span>
     </div>
     <div style={{fontSize:11,color:"var(--ink-light)",borderTop:"1px dashed var(--border)",paddingTop:8,display:"flex",flexDirection:"column",gap:3}}>
+      
     </div>
   </div>;
 }
@@ -68,6 +72,7 @@ function Header({page, setPage}){
     {id:"home",label:" الكتب"},
     {id:"login",label:"دخول"},
     {id:"register",label:"تسجيل"},
+   
   ];
   return <header style={{
     background:"rgba(245,240,232,0.97)",backdropFilter:"blur(8px)",
@@ -110,7 +115,7 @@ function Header({page, setPage}){
 function HomePage(){
   const [search,setSearch]=useState("");
   const [genre,setGenre]=useState("الكل");
-  const [sort,setSort]=useState("rating-desc");
+  const [sort,setSort]=useState("year-desc");
 
   const displayed = useMemo(()=>{
     let arr=[...BOOKS];
@@ -151,7 +156,7 @@ function HomePage(){
 
     {displayed.length===0
       ? <div style={{textAlign:"center",padding:"5rem",color:"var(--ink-light)"}}>
-          <div style={{fontSize:48,marginBottom:16}}></div>
+          <div style={{fontSize:48,marginBottom:16}}>📭</div>
           <p style={{fontSize:16,fontFamily:"'Lora',serif"}}>غير متوفر...</p>
         </div>
       : <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(210px,1fr))",gap:"1.1rem"}}>
@@ -174,7 +179,7 @@ function FormPage({title,emoji,fields,btnLabel,btnBg,note}){
       borderTop:`3px solid ${btnBg}`
     }}>
       <div style={{textAlign:"center",marginBottom:"1.5rem"}}>
-        <div style={{fontSize:40}}>{}</div>
+        <div style={{fontSize:40}}>{emoji}</div>
         <h2 style={{fontFamily:"'Lora',serif",fontSize:24,color:"var(--ink)",marginTop:10}}>{title}</h2>
       </div>
       {fields.map((f,i)=>(
@@ -194,7 +199,9 @@ function FormPage({title,emoji,fields,btnLabel,btnBg,note}){
 }
 
 function AboutPage(){
-  const team=[];
+  const team=[
+    
+  ];
   const stats=[];
   return <main style={{maxWidth:760,margin:"0 auto",padding:"3rem 1.2rem"}}>
     <h1 style={{fontFamily:"'Lora',serif",fontSize:34,color:"var(--ink)",marginBottom:16}}>
@@ -254,6 +261,8 @@ function App(){
       />}
       {page==="about"&&<AboutPage/>}
     </div>
+    
+    
   </div>;
 }
 
