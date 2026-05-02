@@ -1,21 +1,21 @@
 const { useState, useMemo } = React;
 
 const BOOKS = [
-  {id:1,title:"UML",author:"د.حنين حجازي",genre:"هندسة البرمجيات",year:2015,pages:320},
-  {id:2,title:"WEB",author:"د.بشار شبول",genre:"هندسة البرمجيات",year:2026,pages:280},
-  {id:3,title:"Java",author:"د.حنين حجازي",genre:"تكنولوجيا المعلومات",year:2018,pages:350},
-  {id:4,title:"C++",author:"د.ياسر قواسمة",genre:"تكنولوجيا المعلومات",year:2017,pages:400},
-  {id:5,title:"SoftWare Quality",author:"د.محمد زعرور",genre:" هندسة البرمجيات",year:2019,pages:290},
-  {id:6,title:"Testing",author:"د.محمد زعرور",genre:"هندسة البرمجيات",year:2020,pages:310},
-  {id:7,title:"OS",author:"د.سحر العدوان",genre:"علم الحاسوب",year:2021,pages:370},
-  {id:8,title:"Algorithm",author:"د.سحر العدوان",genre:"علم الحاسوب",year:2016,pages:330},
-  {id:9,title:"Data Structure",author:"د.علاء الدين",genre:"انظمة المعلومات الحاسوبية",year:2014,pages:300},
-  {id:10,title:"OOP",author:"د.حنين حجازي",genre:"هندسة البرمجيات",year:2019,pages:360},
-  {id:11,title:"Liner",author:"د.عبدالله شحادة",genre:"رياضيات",year:2013,pages:250},
-  {id:12,title:"Data Base",author:"د.فيروزة",genre:"علم البيانات والذكاء الاصطناعي",year:2022,pages:380},
-  {id:13,title:"SoftWare Design",author:"د.عبدالرحمن الغويري",genre:"هندسة البرمجيات",year:2018,pages:340},
-  {id:14,title:"Software documentation",author:"د.علاء بعارة",genre:"هندسة البرمجيات",year:2020,pages:300},
-  {id:15,title:"SoftWare Fundamentals ",author:"د.مريم ",genre:"تكنولوجيا المعلومات",year:2017,pages:320},
+  {id:1,title:"UML",doctor:"د.حنين حجازي",genre:"هندسة البرمجيات",year:2015,pages:320},
+  {id:2,title:"WEB",doctor:"د.بشار شبول",genre:"هندسة البرمجيات",year:2026,pages:280},
+  {id:3,title:"Java",doctor:"د.حنين حجازي",genre:"تكنولوجيا المعلومات",year:2018,pages:350},
+  {id:4,title:"C++",doctor:"د.ياسر قواسمة",genre:"تكنولوجيا المعلومات",year:2017,pages:400},
+  {id:5,title:"SoftWare Quality",doctor:"د.محمد زعرور",genre:" هندسة البرمجيات",year:2019,pages:290},
+  {id:6,title:"Testing",doctor:"د.محمد زعرور",genre:"هندسة البرمجيات",year:2020,pages:310},
+  {id:7,title:"OS",doctor:"د.سحر العدوان",genre:"علم الحاسوب",year:2021,pages:370},
+  {id:8,title:"Algorithm",doctor:"د.سحر العدوان",genre:"علم الحاسوب",year:2016,pages:330},
+  {id:9,title:"Data Structure",doctor:"د.علاء الدين",genre:"انظمة المعلومات الحاسوبية",year:2014,pages:300},
+  {id:10,title:"OOP",doctor:"د.حنين حجازي",genre:"هندسة البرمجيات",year:2019,pages:360},
+  {id:11,title:"Liner",doctor:"د.عبدالله شحادة",genre:"رياضيات",year:2013,pages:250},
+  {id:12,title:"Data Base",doctor:"د.فيروزة",genre:"علم البيانات والذكاء الاصطناعي",year:2022,pages:380},
+  {id:13,title:"SoftWare Design",doctor:"د.عبدالرحمن الغويري",genre:"هندسة البرمجيات",year:2018,pages:340},
+  {id:14,title:"Software documentation",doctor:"د.علاء بعارة",genre:"هندسة البرمجيات",year:2020,pages:300},
+  {id:15,title:"SoftWare Fundamentals ",doctor:"د.مريم ",genre:"تكنولوجيا المعلومات",year:2017,pages:320},
 ];
 
 const GENRES = ["الكل","هندسة البرمجيات","تكنولوجيا المعلومات","علم الحاسوب","انظمة المعلومات الحاسوبية","علم البيانات والذكاء الاصطناعي","رياضيات"];
@@ -49,10 +49,10 @@ function BookCard({book, delay}){
       animationDelay:delay+"ms",
       cursor:"default",
     }}>
-    <div style={{fontSize:32,textAlign:"center",lineHeight:1,marginBottom:2}}>{book.emoji}</div>
+   
     <div>
       <div style={{fontFamily:"'Lora',serif",fontSize:14,fontWeight:700,color:"var(--ink)",lineHeight:1.4,marginBottom:4}}>{book.title}</div>
-      <div style={{fontSize:12,color:"var(--ink-light)",fontStyle:"italic"}}>{book.author}</div>
+      <div style={{fontSize:12,color:"var(--ink-light)",fontStyle:"italic"}}>{book.doctor}</div>
     </div>
     
     <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
@@ -121,7 +121,7 @@ function HomePage(){
     let arr=[...BOOKS];
     if(search.trim()){
       const q=search.toLowerCase();
-      arr=arr.filter(b=>b.title.toLowerCase().includes(q)||b.author.toLowerCase().includes(q));
+      arr=arr.filter(b=>b.title.toLowerCase().includes(q)||b.doctor.toLowerCase().includes(q));
     }
     if(genre!=="الكل") arr=arr.filter(b=>b.genre===genre);
     const [key,dir]=sort.split("-");
@@ -179,7 +179,6 @@ function FormPage({title,fields,btnLabel,btnBg,note}){
       borderTop:`3px solid ${btnBg}`
     }}>
       <div style={{textAlign:"center",marginBottom:"1.5rem"}}>
-       
         <h2 style={{fontFamily:"'Lora',serif",fontSize:24,color:"var(--ink)",marginTop:10}}>{title}</h2>
       </div>
       {fields.map((f,i)=>(
@@ -221,7 +220,7 @@ function AboutPage(){
     <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))",gap:"1rem",marginBottom:"2.5rem"}}>
       {team.map((m,i)=>(
         <div key={i} style={{background:"var(--paper)",border:"1px solid var(--border-strong)",borderRadius:10,padding:"1.2rem",display:"flex",alignItems:"center",gap:12,boxShadow:"2px 3px 8px var(--shadow)"}}>
-          <div style={{fontSize:30}}>{m.emoji}</div>
+          
           <div>
             <div style={{fontSize:14,fontWeight:700,color:"var(--ink)"}}>{m.name}</div>
             <div style={{fontSize:12,color:"var(--ink-light)",marginTop:2}}>{m.role}</div>
