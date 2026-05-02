@@ -3,17 +3,17 @@ body{font-family:'Tajawal',sans-serif;background:#f5f0e8;color:#2c1f0e;min-heigh
 :root{
   --cream:#f5f0e8;
   --paper:#faf7f2;
-  --brown:#5c3d1e;
-  --brown-light:#8b5e3c;
-  --brown-pale:#c4a882;
-  --ink:#2c1f0e;
-  --ink-light:#6b5044;
-  --accent:#5c3d1e;
-  --accent-warm:#e8b86d;
-  --border:rgba(92,61,30,0.15);
-  --border-strong:rgba(92,61,30,0.3);
-  --surface:#fdf9f4;
-  --shadow:rgba(92,61,30,0.12);
+  --brown:#000000;
+  --brown-light:#000000;
+  --brown-pale:#ffffff;
+  --ink:#000000;
+  --ink-light:#000000;
+  --accent:#000000;
+  --accent-warm:#ffffff;
+  --border:rgba(0, 0, 0, 0.15);
+  --border-strong:rgba(0, 0, 0, 0.3);
+  --surface:#ffffff;
+  --shadow:rgba(0, 0, 0, 0.12);
 }
 input,select{
   font-family:'Tajawal',sans-serif;
