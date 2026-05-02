@@ -27,16 +27,6 @@ const SORTS = [
   {value:"pages-asc",label:"الأقصر"},
 ];
 
-function Stars({rating}){
-  const full = Math.floor(rating/2);
-  const half = (rating/2 - full) >= 0.4 ? 1 : 0;
-  const empty = 5 - full - half;
-  return <span style={{color:"var(--accent-warm)",fontSize:13,letterSpacing:2}}>
-    {"★".repeat(full)}{half?"½":""}{empty>0?"☆".repeat(empty):""}
-    <span style={{fontSize:11,color:"var(--ink-light)",marginRight:4,letterSpacing:0}}> {rating}</span>
-  </span>;
-}
-
 function BookCard({book, delay}){
   const [hov,setHov]=useState(false);
   return <div
@@ -88,7 +78,7 @@ function Header({page, setPage}){
       <div
         onClick={()=>{setPage("home");setMenuOpen(false)}}
         style={{fontFamily:"'Lora',serif",fontSize:22,fontWeight:700,color:"var(--brown)",cursor:"pointer",display:"flex",alignItems:"center",gap:10}}>
-        <span style={{fontSize:26}}></span> المواد
+        <span style={{fontSize:26}}></span> 
       </div>
       <nav className="desktop-nav" style={{display:"flex",gap:2}}>
         {navItems.map(n=>(
