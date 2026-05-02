@@ -174,7 +174,7 @@ function FormPage({title,emoji,fields,btnLabel,btnBg,note}){
       borderTop:`3px solid ${btnBg}`
     }}>
       <div style={{textAlign:"center",marginBottom:"1.5rem"}}>
-        <div style={{fontSize:40}}>{emoji}</div>
+        <div style={{fontSize:40}}>{}</div>
         <h2 style={{fontFamily:"'Lora',serif",fontSize:24,color:"var(--ink)",marginTop:10}}>{title}</h2>
       </div>
       {fields.map((f,i)=>(
