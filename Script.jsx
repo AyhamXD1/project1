@@ -166,7 +166,7 @@ function HomePage(){
   </main>;
 }
 
-function FormPage({title,emoji,fields,btnLabel,btnBg,note}){
+function FormPage({title,fields,btnLabel,btnBg,note}){
   const inp={
     display:"block",width:"100%",marginBottom:14,padding:"10px 14px",
     borderRadius:6,background:"var(--cream)",border:"1px solid var(--border-strong)",
@@ -179,7 +179,7 @@ function FormPage({title,emoji,fields,btnLabel,btnBg,note}){
       borderTop:`3px solid ${btnBg}`
     }}>
       <div style={{textAlign:"center",marginBottom:"1.5rem"}}>
-        <div style={{fontSize:40}}>{emoji}</div>
+       
         <h2 style={{fontFamily:"'Lora',serif",fontSize:24,color:"var(--ink)",marginTop:10}}>{title}</h2>
       </div>
       {fields.map((f,i)=>(
