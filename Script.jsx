@@ -1,6 +1,5 @@
 const { useState, useMemo, useEffect } = React;
 
-// رابط الباك إند الخاص بك على ريندر
 const API_URL = "https://project2-1kr4.onrender.com/api";
 
 const GENRES = ["الكل","هندسة البرمجيات","تكنولوجيا المعلومات","علم الحاسوب","انظمة المعلومات الحاسوبية","علم البيانات والذكاء الاصطناعي","رياضيات"];
@@ -76,7 +75,6 @@ function HomePage(){
   const [sort,setSort]=useState("year-desc");
   const [loading, setLoading] = useState(true);
 
-  // جلب الكتب الحية من الباك إند المرفوع
   useEffect(() => {
     fetch(`${API_URL}/books`)
       .then(res => res.json())
@@ -110,7 +108,7 @@ function HomePage(){
   return <main style={{maxWidth:1100,margin:"0 auto",padding:"2rem 1.2rem"}}>
     <div style={{marginBottom:"2rem",borderBottom:"1px dashed var(--border-strong)",paddingBottom:"1.5rem"}}>
       <h1 style={{fontFamily:"'Lora',serif",fontSize:34,fontWeight:700,color:"var(--ink)",marginBottom:6}}>
-        المواد <span style={{color:"var(--accent)"}}>المتوفرة حياً</span>
+        المواد <span style={{color:"var(--accent)"}}>المتوفرة </span>
       </h1>
     </div>
 
@@ -208,7 +206,7 @@ function App(){
     .then(res => res.json())
     .then(resData => {
       if(resData.error) throw new Error(resData.error);
-      alert("تم إنشاء الحساب بنجاح! يمكنك الآن تسجيل الدخول.");
+      alert("تم إنشاء الحساب بنجاح");
       setPage("login");
     })
     .catch(err => setError(err.message || "فشلت عملية إنشاء الحساب"));
