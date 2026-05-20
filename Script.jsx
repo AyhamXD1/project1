@@ -52,7 +52,7 @@ function Header({page, setPage, user, onLogout}){
   }}>
     <div style={{maxWidth:1100,margin:"0 auto",padding:"0 1.2rem",display:"flex",alignItems:"center",justifyContent:"space-between",height:62}}>
       <div onClick={()=>{setPage("home");setMenuOpen(false)}} style={{fontFamily:"'Lora',serif",fontSize:22,fontWeight:700,color:"var(--brown)",cursor:"pointer"}}>
-        <span>📚 مكتبة الكتب</span> 
+        <span>المواد المتاحة</span> 
       </div>
       <nav className="desktop-nav" style={{display:"flex",gap:2}}>
         <button onClick={()=>setPage("home")} style={{background:"none",border:"none",padding:"6px 14px",fontSize:13,color:page==="home"?"var(--accent)":"var(--ink-light)",borderBottom:page==="home"?"2px solid var(--accent)":"2px solid transparent"}}>الكتب</button>
@@ -109,7 +109,7 @@ function HomePage(){
   return <main style={{maxWidth:1100,margin:"0 auto",padding:"2rem 1.2rem"}}>
     <div style={{marginBottom:"2rem",borderBottom:"1px dashed var(--border-strong)",paddingBottom:"1.5rem"}}>
       <h1 style={{fontFamily:"'Lora',serif",fontSize:34,fontWeight:700,color:"var(--ink)",marginBottom:6}}>
-        المواد <span style={{color:"var(--accent)"}}>المتوفرة حياً</span>
+        المواد <span style={{color:"var(--accent)"}}>المتوفرة </span>
       </h1>
     </div>
 
