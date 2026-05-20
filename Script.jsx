@@ -1,6 +1,5 @@
 const { useState, useMemo, useEffect } = React;
 
-// رابط الباك إند الخاص بك على ريندر
 const API_URL = "https://project2-1kr4.onrender.com/api";
 
 const GENRES = ["الكل","هندسة البرمجيات","تكنولوجيا المعلومات","علم الحاسوب","انظمة المعلومات الحاسوبية","علم البيانات والذكاء الاصطناعي","رياضيات"];
@@ -109,7 +108,7 @@ function HomePage(){
   return <main style={{maxWidth:1100,margin:"0 auto",padding:"2rem 1.2rem"}}>
     <div style={{marginBottom:"2rem",borderBottom:"1px dashed var(--border-strong)",paddingBottom:"1.5rem"}}>
       <h1 style={{fontFamily:"'Lora',serif",fontSize:34,fontWeight:700,color:"var(--ink)",marginBottom:6}}>
-        المواد <span style={{color:"var(--accent)"}}>المتوفرة </span>
+       
       </h1>
     </div>
 
