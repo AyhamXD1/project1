@@ -1,5 +1,6 @@
 const { useState, useMemo, useEffect } = React;
 
+// رابط الباك إند الخاص بك على ريندر
 const API_URL = "https://project2-1kr4.onrender.com/api";
 
 const GENRES = ["الكل","هندسة البرمجيات","تكنولوجيا المعلومات","علم الحاسوب","انظمة المعلومات الحاسوبية","علم البيانات والذكاء الاصطناعي","رياضيات"];
@@ -51,7 +52,7 @@ function Header({page, setPage, user, onLogout}){
   }}>
     <div style={{maxWidth:1100,margin:"0 auto",padding:"0 1.2rem",display:"flex",alignItems:"center",justifyContent:"space-between",height:62}}>
       <div onClick={()=>{setPage("home");setMenuOpen(false)}} style={{fontFamily:"'Lora',serif",fontSize:22,fontWeight:700,color:"var(--brown)",cursor:"pointer"}}>
-        <span>مكتبة الكتب</span> 
+        <span>📚 مكتبة الكتب</span> 
       </div>
       <nav className="desktop-nav" style={{display:"flex",gap:2}}>
         <button onClick={()=>setPage("home")} style={{background:"none",border:"none",padding:"6px 14px",fontSize:13,color:page==="home"?"var(--accent)":"var(--ink-light)",borderBottom:page==="home"?"2px solid var(--accent)":"2px solid transparent"}}>الكتب</button>
@@ -61,7 +62,7 @@ function Header({page, setPage, user, onLogout}){
             <button onClick={()=>setPage("register")} style={{background:"none",border:"none",padding:"6px 14px",fontSize:13,color:page==="register"?"var(--accent)":"var(--ink-light)",borderBottom:page==="register"?"2px solid var(--accent)":"2px solid transparent"}}>تسجيل</button>
           </>
         ) : (
-          <button onClick={onLogout} style={{background:"none",border:"none",padding:"6px 14px",fontSize:13,color:"red"}}>خروج ({user.username || 'المستخدم'})</button>
+          <button onClick={onLogout} style={{background:"none",border:"none",padding:"6px 14px",fontSize:13,color:"red"}}>خروج ({user.username})</button>
         )}
       </nav>
     </div>
@@ -83,7 +84,7 @@ function HomePage(){
         setLoading(false);
       })
       .catch(err => {
-        console.error("خطأ في جلب البيانات:", err);
+        console.error("Error fetching books:", err);
         setLoading(false);
       });
   }, []);
@@ -108,7 +109,7 @@ function HomePage(){
   return <main style={{maxWidth:1100,margin:"0 auto",padding:"2rem 1.2rem"}}>
     <div style={{marginBottom:"2rem",borderBottom:"1px dashed var(--border-strong)",paddingBottom:"1.5rem"}}>
       <h1 style={{fontFamily:"'Lora',serif",fontSize:34,fontWeight:700,color:"var(--ink)",marginBottom:6}}>
-        المواد <span style={{color:"var(--accent)"}}>المتوفرة </span>
+        المواد <span style={{color:"var(--accent)"}}>المتوفرة حياً</span>
       </h1>
     </div>
 
@@ -129,7 +130,7 @@ function HomePage(){
     {displayed.length===0
       ? <div style={{textAlign:"center",padding:"5rem",color:"var(--ink-light)"}}>
           <div style={{fontSize:48,marginBottom:16}}>📭</div>
-          <p style={{fontSize:16,fontFamily:"'Lora',serif"}}>لا توجد كتب متوفرة مطابقة للبحث.</p>
+          <p style={{fontSize:16,fontFamily:"'Lora',serif"}}>لا توجد كتب حالياً.</p>
         </div>
       : <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(210px,1fr))",gap:"1.1rem"}}>
           {displayed.map((b,i)=><BookCard key={b._id || b.id} book={b} delay={i*40}/>)}
@@ -140,11 +141,9 @@ function HomePage(){
 
 function FormPage({title, fields, btnLabel, btnBg, onSubmit, errorMessage}){
   const [formData, setFormData] = useState({});
-
   const handleChange = (name, value) => {
     setFormData(prev => ({...prev, [name]: value}));
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(formData);
@@ -206,7 +205,7 @@ function App(){
     .then(res => res.json())
     .then(resData => {
       if(resData.error) throw new Error(resData.error);
-      alert("تم إنشاء الحساب بنجاح");
+      alert("تم إنشاء الحساب بنجاح! يمكنك الدخول الآن.");
       setPage("login");
     })
     .catch(err => setError(err.message || "فشلت عملية إنشاء الحساب"));
@@ -226,7 +225,7 @@ function App(){
       alert("تم تسجيل الدخول بنجاح!");
       setPage("home");
     })
-    .catch(err => setError(err.message || "فشل تسجيل الدخول، تحقق من البيانات"));
+    .catch(err => setError(err.message || "خطأ في البريد الإلكتروني أو كلمة المرور"));
   };
 
   const handleLogout = () => {
